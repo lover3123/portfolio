@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --editor-bg: #1E1E1E;
+  --editor-line: #858585;
+  --editor-selection: #264F78;
+  --editor-keyword: #569CD6;
+  --editor-function: #DCDCAA;
+  --editor-string: #CE9178;
+  --editor-number: #B5CEA8;
+  --editor-comment: #6A9955;
+  --editor-type: #4EC9B0;
+  --editor-class: #4EC9B0;
+  --editor-variable: #9CDCFE;
+  --editor-property: #9CDCFE;
+  --editor-foreground: #D4D4D4;
+}
+
+html, body {
+  @apply bg-[var(--editor-bg)] text-[var(--editor-foreground)] font-mono overflow-x-hidden;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Custom scrollbar - VS Code style */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1E1E1E;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #424242;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Component classes */
+@layer components {
+  .sidebar-item {
+    @apply flex items-center px-4 py-2 text-gray-300 hover:bg-[#2D2D2D] hover:text-white border-l-2 border-transparent hover:border-[var(--editor-function)] transition-all duration-200;
+  }
+  
+  .sidebar-item.active {
+    @apply bg-[#2D2D2D] text-white border-l-2 border-[var(--editor-function)];
+  }
+  
+  .code-window {
+    @apply rounded-md overflow-hidden shadow-lg bg-[var(--editor-bg)] border border-gray-700 my-4;
+  }
+  
+  .code-window-header {
+    @apply flex items-center justify-between bg-[#252526] px-4 py-2 border-b border-gray-700;
+  }
+  
+  .code-window-body {
+    @apply p-4 font-mono text-[var(--editor-foreground)];
+  }
+  
+  .terminal-input {
+    @apply bg-[#1E1E1E] border border-gray-700 rounded px-3 py-2 w-full text-white font-mono placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--editor-function)] focus:border-transparent;
+  }
+  
+  .terminal-button {
+    @apply bg-[var(--editor-type)] hover:bg-opacity-80 text-black font-medium px-4 py-2 rounded transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--editor-type)] focus:ring-opacity-50;
+  }
+  
+  .code-comment {
+    @apply text-[var(--editor-comment)];
+  }
+  
+  .code-keyword {
+    @apply text-[var(--editor-keyword)];
+  }
+  
+  .code-string {
+    @apply text-[var(--editor-string)];
+  }
+  
+  .code-function {
+    @apply text-[var(--editor-function)];
+  }
+  
+  .code-variable {
+    @apply text-[var(--editor-variable)];
+  }
+  
+  .code-type {
+    @apply text-[var(--editor-type)];
+  }
+  
+  .code-number {
+    @apply text-[var(--editor-number)];
+  }
+  
+  .line-number {
+    @apply text-[var(--editor-line)] text-right pr-4 select-none;
+  }
+}
